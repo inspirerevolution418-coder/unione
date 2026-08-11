@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Register | UNIONE</title>
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+  <div class="login-wrap">
+    <div class="login-box" style="max-width:440px;">
+      <h1>UNI<span style="color:#b9862f">ONE</span></h1>
+      <p class="sub">Create your student account</p>
+
+      <% if (error) { %>
+        <div class="alert alert-error"><%= error %></div>
+      <% } %>
+
+      <form method="POST" action="/register">
+        <label for="student_id">Student ID *</label>
+        <input type="text" id="student_id" name="student_id" placeholder="e.g. 221-15-4567"
+               value="<%= form.student_id || '' %>" required autofocus>
+
+        <label for="name">Full Name *</label>
+        <input type="text" id="name" name="name" placeholder="e.g. Mahe Siddiquee"
+               value="<%= form.name || '' %>" required>
+
+        <label for="email">Email *</label>
+        <input type="text" id="email" name="email" placeholder="you@example.edu"
+               value="<%= form.email || '' %>" required>
+
+        <label for="department">Department</label>
+        <input type="text" id="department" name="department" placeholder="e.g. CSE"
+               value="<%= form.department || '' %>">
+
+        <label for="semester">Semester</label>
+        <input type="text" id="semester" name="semester" placeholder="e.g. 6th"
+               value="<%= form.semester || '' %>">
+
+        <label for="phone">Phone</label>
+        <input type="tel" id="phone" name="phone" placeholder="e.g. 01700000000"
+               value="<%= form.phone || '' %>">
+
+        <label for="password">Password *</label>
+        <input type="password" id="password" name="password" placeholder="At least 6 characters" required>
+
+        <label for="confirm_password">Confirm Password *</label>
+        <input type="password" id="confirm_password" name="confirm_password" required>
+
+        <button type="submit" class="btn" style="width:100%;">Create Account</button>
+      </form>
+
+      <p class="hint">Already have an account? <a href="/login">Log in</a></p>
+    </div>
+  </div>
+</body>
+</html>

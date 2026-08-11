@@ -1,0 +1,36 @@
+<%- include('partials/header', { pageTitle: 'Profile', active: 'profile' }) %>
+
+<h1 class="page-title">Profile</h1>
+<p class="page-subtitle">Your student record on file.</p>
+
+<% if (saved) { %>
+  <div class="alert alert-success">Profile updated.</div>
+<% } %>
+
+<div class="card">
+  <h2>Account details</h2>
+  <table>
+    <tr><th style="width:220px;">Student ID</th><td><%= student.student_id %></td></tr>
+    <tr><th>Name</th><td><%= student.name %></td></tr>
+    <tr><th>Email</th><td><%= student.email %></td></tr>
+    <tr><th>Member since</th><td><%= new Date(student.created_at).toDateString() %></td></tr>
+  </table>
+</div>
+
+<div class="card">
+  <h2>Editable details</h2>
+  <form method="POST" action="/profile">
+    <label for="department">Department</label>
+    <input type="text" id="department" name="department" value="<%= student.department || '' %>">
+
+    <label for="semester">Semester</label>
+    <input type="text" id="semester" name="semester" value="<%= student.semester || '' %>">
+
+    <label for="phone">Phone</label>
+    <input type="tel" id="phone" name="phone" value="<%= student.phone || '' %>">
+
+    <button type="submit" class="btn">Save Changes</button>
+  </form>
+</div>
+
+<%- include('partials/footer') %>
